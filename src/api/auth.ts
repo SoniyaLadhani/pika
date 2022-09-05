@@ -10,6 +10,8 @@ export const loginUserRequest = (payload: string) => {
   });
 };
 
-export const getUserRequest = () => {
+export const getUserDetailsRequest = () => {
   return axios.get("https://api.unsplash.com/me");
 };
+
+

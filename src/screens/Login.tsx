@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Box, Button } from "@mui/material";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import { loginUser } from "../redux/actions/authActions";
 import { AppDispatch } from "../redux";
@@ -12,11 +13,12 @@ const REACT_APP_OAUTH_PATH =
 export const Login = () => {
   const { search } = useLocation();
   const dispatch = useDispatch<AppDispatch>();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (search.includes("code")) {
-      const payload = search.split("=")[1];
-      dispatch(loginUser(payload));
+      const code = search.split("=")[1];
+      dispatch(loginUser({ code, navigate }));
     }
   }, [search]);
 

@@ -3,8 +3,13 @@ import { NavLink } from "react-router-dom";
 import { AppBar, Box, Link, Toolbar, Typography } from "@mui/material";
 
 import { routes } from "../navigation/routes";
+import { RootStore } from "../redux";
+import { useSelector } from "react-redux";
 
 export const Navbar: FC = (): ReactElement => {
+  const userName: string = useSelector(
+    (state: RootStore) => state.authReducer.userName,
+  );
   return (
     <AppBar position="sticky">
       <Box
@@ -43,6 +48,7 @@ export const Navbar: FC = (): ReactElement => {
               ))}
             </Box>
           </Box>
+          {userName && <Box>{`Logged in as: ${userName}`}</Box>}
         </Toolbar>
       </Box>
     </AppBar>

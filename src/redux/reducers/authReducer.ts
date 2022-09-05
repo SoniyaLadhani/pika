@@ -2,7 +2,7 @@ import { actionTypes } from "../actions/actionTypes";
 
 const initialState:AuthState = {
   signedIn: false,
-  userName: "Soniya Ladhani",
+  userName: "",
 };
 
 export const authReducer = (state: AuthState = initialState, action: any): AuthState => {

@@ -49,11 +49,13 @@ interface AuthRequest {
   type: string,
   payload: object
 }
+
 interface AuthError {
   type: string
 }
+
 interface AuthSuccess {
   type: string,
-  payload: object
 }
+
 type AuthDispatchTypes = AuthRequest | AuthError | AuthSuccess
