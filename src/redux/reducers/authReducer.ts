@@ -14,6 +14,13 @@ export const authReducer = (state: AuthState = initialState, action: any): AuthS
         userName: action.payload,
       };
 
+      case actionTypes.LOGOUT_USER_SUCCESS:
+        return {
+          ...state,
+          signedIn: false,
+          userName: "",
+        };
+
     default:
       return state;
   }

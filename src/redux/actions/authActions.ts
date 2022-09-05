@@ -24,3 +24,15 @@ export const loginUser = (payload:any) => async (dispatch: Dispatch<AuthDispatch
     }
   }
 
+
+  export const logOutUser = () => async (dispatch: Dispatch<AuthDispatchTypes>) => {
+
+    dispatch({ type: actionTypes.LOGOUT_USER_REQUEST })
+    try {
+        localStorage.clear()
+        dispatch({ type: actionTypes.LOGOUT_USER_SUCCESS })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+

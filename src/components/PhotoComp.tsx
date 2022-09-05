@@ -3,10 +3,16 @@ import { ImageListItem, ImageListItemBar } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
+import { RootStore } from "../redux";
+import { useSelector } from "react-redux";
+
 export const PhotoComp: FC<PhotoListItem> = ({
   photo,
 }: PhotoListItem): ReactElement => {
   const { alt_description, description, urls, user } = photo;
+  const signedIn: boolean = useSelector(
+    (state: RootStore) => state.authReducer.signedIn,
+  );
 
   return (
     <>
@@ -24,7 +30,7 @@ export const PhotoComp: FC<PhotoListItem> = ({
               sx={{ color: "primary.overlay" }}
               aria-label={`info about ${description}`}
             >
-              <FavoriteIcon />
+              {signedIn ? <FavoriteIcon /> : null}
             </IconButton>
           }
         />
